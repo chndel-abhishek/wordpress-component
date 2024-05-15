@@ -7,7 +7,7 @@
  * @package DeveloperNews
  * @subpackage Theme
  * @author Abhishek
- * @copyright tag 
+ * @copyright tag
  */
 
 echo 'Hello!<br>';
