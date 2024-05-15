@@ -6,4 +6,3 @@ Version: 1.0
 Author: Your Name
 */
 
-// Your plugin code here
