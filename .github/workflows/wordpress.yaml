@@ -28,11 +28,11 @@ jobs:
 
       - name: Install dependencies
         run: composer install
-        working-directory: ./wordpress
+        working-directory: .
 
       - name: Run PHPCS
         run: composer phpcs
-        working-directory: ./wordpress
+        working-directory: .
 
   build-and-deploy:
     needs: phpcs
