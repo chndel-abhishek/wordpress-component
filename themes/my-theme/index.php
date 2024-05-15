@@ -5,6 +5,7 @@
  * Author: Your Name
  * Version: 1.0.0
  * @package DeveloperNews
+ * @subpackage Theme
  */
 
 echo 'Hello!<br>';
