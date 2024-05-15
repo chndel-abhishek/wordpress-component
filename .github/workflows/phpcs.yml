@@ -2,11 +2,8 @@ name: WordPress CI
 
 on:
   push:
-    paths:
-      - '.'
-  pull_request:
-    paths:
-      - '.'
+   branches:
+    'main'
 
 jobs:
   phpcs:
