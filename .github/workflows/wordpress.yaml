@@ -1,69 +1,69 @@
-# name: WordPress CI/CD
+name: WordPress CI/CD
 
-# on:
-#   push:
-#     branches:
-#       - main
-#       - 'feature/**'
-#   pull_request:
-#     branches:
-#       - main
-#       - 'feature/**'
+on:
+  push:
+    branches:
+      - main
+      - 'feature/**'
+  pull_request:
+    branches:
+      - main
+      - 'feature/**'
 
-# jobs:
-#   phpcs:
-#     runs-on: ubuntu-latest
+jobs:
+  phpcs:
+    runs-on: ubuntu-latest
 
-#     steps:
-#       - name: Checkout code
-#         uses: actions/checkout@v2
-#         with:
-#           submodules: true
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          submodules: true
 
-#       - name: Set up PHP
-#         uses: shivammathur/setup-php@v2
-#         with:
-#           php-version: '7.4'
-#           tools: composer
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '7.4'
+          tools: composer
 
-#       - name: Install dependencies
-#         run: composer install
-#         working-directory: .
+      - name: Install dependencies
+        run: composer install
+        working-directory: .
 
-#       - name: Run PHPCS
-#         run: composer phpcs
-#         working-directory: .
+      - name: Run PHPCS
+        run: composer phpcs
+        working-directory: .
 
-#   build-and-deploy:
-#     needs: phpcs
-#     runs-on: ubuntu-latest
-#     if: success() # Only run if PHPCS step is successful
+  build-and-deploy:
+    needs: phpcs
+    runs-on: ubuntu-latest
+    if: success() # Only run if PHPCS step is successful
 
-#     steps:
-#       - name: Checkout code
-#         uses: actions/checkout@v2
-#         with:
-#           submodules: true
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          submodules: true
 
-#       - name: Log in to Docker Hub
-#         uses: docker/login-action@v2
-#         with:
-#           username: ${{ secrets.DOCKER_USERNAME }}
-#           password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
 
-#       - name: Build Docker image
-#         run: |
-#           IMAGE_TAG=${{ github.run_number }}-${{ github.sha }}
-#           docker build -t ${{ secrets.DOCKER_USERNAME }}/wordpress:${IMAGE_TAG} ./wordpress
-#           echo "IMAGE_TAG=${IMAGE_TAG}" >> $GITHUB_ENV
+      - name: Build Docker image
+        run: |
+          IMAGE_TAG=${{ github.run_number }}-${{ github.sha }}
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/wordpress:${IMAGE_TAG} ./wordpress
+          echo "IMAGE_TAG=${IMAGE_TAG}" >> $GITHUB_ENV
 
-#       - name: Push Docker image
-#         run: |
-#           IMAGE_TAG=${{ env.IMAGE_TAG }}
-#           docker push ${{ secrets.DOCKER_USERNAME }}/wordpress:${IMAGE_TAG}
+      - name: Push Docker image
+        run: |
+          IMAGE_TAG=${{ env.IMAGE_TAG }}
+          docker push ${{ secrets.DOCKER_USERNAME }}/wordpress:${IMAGE_TAG}
 
-#       - name: Deploy to staging
-#         run: |
-#           IMAGE_TAG=${{ env.IMAGE_TAG }}
-#           echo "Deploying WordPress app to staging environment with tag ${IMAGE_TAG}"
-#           # Add your deployment script here
+      - name: Deploy to staging
+        run: |
+          IMAGE_TAG=${{ env.IMAGE_TAG }}
+          echo "Deploying WordPress app to staging environment with tag ${IMAGE_TAG}"
+
