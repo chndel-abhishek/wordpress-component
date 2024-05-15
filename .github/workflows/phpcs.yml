@@ -3,10 +3,10 @@ name: WordPress CI
 on:
   push:
     paths:
-      - 'wordpress-components/**'
+      - '.'
   pull_request:
     paths:
-      - 'wordpress-components/**'
+      - '.'
 
 jobs:
   phpcs:
@@ -24,8 +24,8 @@ jobs:
 
       - name: Install dependencies
         run: composer install
-        working-directory: ./wordpress
+        working-directory: .
 
       - name: Run PHPCS
         run: composer phpcs
-        working-directory: ./wordpress
+        working-directory: .
