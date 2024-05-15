@@ -24,4 +24,4 @@ jobs:
         working-directory: .
 
       - name: Run PHPCS
-        run: vendor/bin/phpcs --standard=WordPress .
+        run: vendor/bin/phpcs --standard=./vendor/wp-coding-standards/wpcs/WordPress .
