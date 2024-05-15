@@ -54,17 +54,13 @@ jobs:
 
       - name: Build Docker image
         run: |
-          IMAGE_TAG=${{ github.run_number }}-${{ github.sha }}
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/wordpress:${IMAGE_TAG} .
-          echo "IMAGE_TAG=${IMAGE_TAG}" >> $GITHUB_ENV
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/wordpress:latest .
 
       - name: Push Docker image
         run: |
-          IMAGE_TAG=${{ env.IMAGE_TAG }}
-          docker push ${{ secrets.DOCKER_USERNAME }}/wordpress:${IMAGE_TAG}
+          docker push ${{ secrets.DOCKER_USERNAME }}/wordpress:latest
 
       - name: Deploy to staging
         run: |
           IMAGE_TAG=${{ env.IMAGE_TAG }}
           echo "Deploying WordPress app to staging environment with tag ${IMAGE_TAG}"
-
