@@ -30,13 +30,14 @@ jobs:
         run: composer install
         working-directory: .
 
-      - name: Install PHPCS
-        run: composer global require squizlabs/php_codesniffer
-        env:
-          COMPOSER_ALLOW_SUPERUSER: 1
-
+      - name: Install PHPCS and WordPress coding standard
+        run: composer global require "squizlabs/php_codesniffer=*"
+      
+      - name: Configure PHPCS for WordPress
+        run: phpcs --config-set installed_paths ~/.composer/vendor/wp-coding-standards/wpcs
+      
       - name: Run PHPCS
-        run: ~/.composer/vendor/bin/phpcs
+        run: ~/.composer/vendor/bin/phpcs --standard=WordPress .
         working-directory: .
 
   build-and-deploy:
