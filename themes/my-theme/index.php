@@ -16,4 +16,3 @@ echo 'Enjoy all of the ad-free articles<br>';
 ?>
 
 
-
