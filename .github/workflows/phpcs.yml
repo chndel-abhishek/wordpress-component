@@ -23,7 +23,7 @@ jobs:
       - name: Install dependencies
         run: composer install
       - name: check diff
-        run: vendor/bin/phpcs --report-diff=./change.diff .\themes\my-theme\index.php
+        run: vendor/bin/phpcs --report-diff=./change.diff ./themes/my-theme/index.php
       - name: cat
         run: cat ./change.diff
       - name: Run PHPCS
