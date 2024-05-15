@@ -1,3 +1,4 @@
 <?php
-echo 'Abhishek ' .'\n'.'Wordpress';
-?> \n
+echo 'Abhishek';
+?> 
+\n
