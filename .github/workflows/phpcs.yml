@@ -18,9 +18,13 @@ jobs:
         with:
           php-version: '7.4'
           extensions: mbstring
-
+      - name: Install dependencies
+        run: ls
       - name: Install dependencies
         run: composer install
+        working-directory: .
+      - name: Install dependencies
+        run: phpcs -i
         working-directory: .
 
       - name: Run PHPCS
