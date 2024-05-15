@@ -22,7 +22,5 @@ jobs:
         run: ls
       - name: Install dependencies
         run: composer install
-
-
       - name: Run PHPCS
         run: vendor/bin/phpcs --standard=WordPress --ignore=vendor ./themes/my-theme/index.php
