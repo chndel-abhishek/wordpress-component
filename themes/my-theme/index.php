@@ -1,9 +1,5 @@
 <?php
-get_header(); // Load the header of the theme
-?>
-<div id="content">
-    <h1>Hello from WordPress!</h1>
-</div>
-<?php
-get_footer(); // Load the footer of the theme
+ECHO "Hello!<br>";
+echo "Welcome to Developer News<br>";
+EcHo "Enjoy all of the ad-free articles<br>";
 ?>
