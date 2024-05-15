@@ -17,11 +17,11 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: '7.4'
-          tools: composer
+          extensions: mbstring
 
       - name: Install dependencies
         run: composer install
         working-directory: .
 
       - name: Run PHPCS
-        run: vendor/bin/phpcs --standard=./vendor/wp-coding-standards/wpcs/WordPress .
+        run: vendor/bin/phpcs --standard=WordPress --ignore=vendor ./
