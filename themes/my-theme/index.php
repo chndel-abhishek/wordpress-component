@@ -1,16 +1,12 @@
 <?php
 /**
- * File: index.php
- * Description: Example file for Developer News theme.
- * Author: Abhishek
+ * File: example.php
+ * Description: A simple PHP file without any errors.
+ * Author: John Doe
  * Version: 1.0.0
- * @package DeveloperNews
- * @subpackage Theme
- * @author Abhishek
- * @copyright tag
+ * @package ExamplePackage
  */
 
-echo 'Hello!<br>';
-echo 'Welcome to Developer News<br>';
-echo 'Enjoy all of the ad-free articles<br>';
+// Print a simple message
+echo 'Hello, World!';
 ?>
