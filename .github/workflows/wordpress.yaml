@@ -30,8 +30,13 @@ jobs:
         run: composer install
         working-directory: .
 
+      - name: Install PHPCS
+        run: composer global require squizlabs/php_codesniffer
+        env:
+          COMPOSER_ALLOW_SUPERUSER: 1
+
       - name: Run PHPCS
-        run: composer phpcs
+        run: ~/.composer/vendor/bin/phpcs
         working-directory: .
 
   build-and-deploy:
