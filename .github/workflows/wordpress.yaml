@@ -17,28 +17,23 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-        with:
-          submodules: true
 
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: '7.4'
-          tools: composer
-
+          extensions: mbstring
+      - name: Install dependencies
+        run: ls
       - name: Install dependencies
         run: composer install
-        working-directory: .
-
-      - name: Install PHPCS and WordPress coding standard
-        run: composer global require "squizlabs/php_codesniffer=*"
-      
-      - name: Configure PHPCS for WordPress
-        run: phpcs --config-set installed_paths ~/.composer/vendor/wp-coding-standards/wpcs
-      
+      - name: check diff
+        run: vendor/bin/phpcs --report-diff=./change.diff ./themes/my-theme/index.php
+      - name: cat
+        run: cat ./change.diff
       - name: Run PHPCS
-        run: ~/.composer/vendor/bin/phpcs --standard=WordPress .
-        working-directory: .
+        run: vendor/bin/phpcs --standard=WordPress --ignore=vendor ./themes/my-theme/index.php
+
 
   build-and-deploy:
     needs: phpcs
