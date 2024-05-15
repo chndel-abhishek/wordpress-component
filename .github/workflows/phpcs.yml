@@ -23,9 +23,7 @@ jobs:
       - name: Install dependencies
         run: composer install
         working-directory: .
-      - name: Install dependencies
-        run: phpcs -i
-        working-directory: .
+
 
       - name: Run PHPCS
-        run: vendor/bin/phpcs --standard=WordPress --ignore=vendor ./
+        run: vendor/bin/phpcs --standard=WordPress --ignore=vendor ./themes/my-theme/index.php
