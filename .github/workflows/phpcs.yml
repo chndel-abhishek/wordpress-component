@@ -2,11 +2,8 @@ name: WordPress CI
 
 on:
   push:
-    paths:
-      - '.'
-  pull_request:
-    paths:
-      - '.'
+    branches:
+      - main
 
 jobs:
   phpcs:
@@ -27,5 +24,4 @@ jobs:
         working-directory: .
 
       - name: Run PHPCS
-        run: composer phpcs
-        working-directory: .
+        run: vendor/bin/phpcs --standard=WordPress .
