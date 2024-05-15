@@ -22,7 +22,6 @@ jobs:
         run: ls
       - name: Install dependencies
         run: composer install
-        working-directory: .
 
 
       - name: Run PHPCS
