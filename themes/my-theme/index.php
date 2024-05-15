@@ -4,6 +4,7 @@
  * Description: Example file for Developer News theme.
  * Author: Your Name
  * Version: 1.0.0
+ * @package DeveloperNews
  */
 
 echo 'Hello!<br>';
